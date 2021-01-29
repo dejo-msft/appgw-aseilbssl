@@ -25,7 +25,8 @@
         "Australia Southeast",
         "West India",
         "Central India",
-        "South India"
+        "South India",
+        "South Africa North"
       ],
       "metadata": {
         "description": "Location of the App Service Environment. This is a workaround because ASE doesn't like the normalized (ie: westeurope) naming now. Obviously, has to be the same location as your Resource Group."
@@ -500,6 +501,9 @@
       "dependsOn": [
         "update-virtualnetwork-dns"
       ],
+       "zones": [
+         "2"
+       ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
