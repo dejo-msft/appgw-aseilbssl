@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "aseLocation": {
-      "value": "West Europe"
+      "value": "South Africa North"
     },
     "aseILBPfxBase64": {
       "value": "The App Service Environment pfx file encoded as a base-64 string."
@@ -18,16 +18,16 @@
       "value": "The App Service Environment password of certificate contained in aseILBPfxBase64."
     },
     "rootZoneName": {
-      "value": "domain.com"
+      "value": "waza.dev"
     },
     "appName": {
       "value": "app1"
     },
     "aseDNSSuffix": {
-      "value": "internal.domain.com"
+      "value": "internal.waza.dev"
     },
     "bindUsername": {
-      "value": "azureuser"
+      "value": "bindadmin"
     },
     "bindPassword": {
       "value": ""
