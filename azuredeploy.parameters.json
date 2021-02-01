@@ -30,7 +30,7 @@
       "value": "bindadmin"
     },
     "bindPassword": {
-      "value": ""
+      "value": "Th!sIsAPassw0rd!"
     },
     "vnetAddressPrefix": {
       "value": "172.16.0.0/16"
