@@ -1,5 +1,5 @@
 ﻿{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "aseLocation": {
@@ -294,7 +294,7 @@
 
     "repositoryLocation": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/sabbour/appgw-aseilbssl/master",
+      "defaultValue": "https://raw.githubusercontent.com/warrendt/appgw-aseilbssl/master",
       "metadata": {
         "description": "Container in staging storage account to receive post-build staging folder upload"
       }

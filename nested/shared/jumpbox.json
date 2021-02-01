@@ -20,7 +20,7 @@
     "vmUbuntuOSVersion": "2012-R2-Datacenter",
     "vmImagePublisher": "MicrosoftWindowsServer",
     "vmImageOffer": "WindowsServer",
-    "vmSize": "Standard_A2",
+    "vmSize": "Standard_A2_v2",
     "vmNicName": "[concat(parameters('vmName'), '-nic')]",
     "vmNSGName": "[concat(parameters('vmName'), '-nsg')]",
     "vmIPName": "[concat(parameters('vmName'), '-ip')]",
