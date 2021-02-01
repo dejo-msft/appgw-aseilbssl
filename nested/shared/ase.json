@@ -66,6 +66,9 @@
       "properties": {
         "name": "[parameters('aseName')]",
         "location": "[parameters('aseLocation')]",
+        "zones": [
+            "2"
+         ],
         "ipSslAddressCount": "0",
         "internalLoadBalancingMode": "3",
         "clusterSettings": [
