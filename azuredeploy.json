@@ -501,9 +501,6 @@
       "dependsOn": [
         "update-virtualnetwork-dns"
       ],
-       "zones": [
-         "2"
-       ],
       "properties": {
         "mode": "Incremental",
         "templateLink": {
