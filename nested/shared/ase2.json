@@ -38,7 +38,7 @@
     "vnetRef": {
       "type": "string"
     },
-    "aseSubnetName": {
+    "aseSubnetName2": {
       "type": "string"
     },
     "pfxBase64": {
