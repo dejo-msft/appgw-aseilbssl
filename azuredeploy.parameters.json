@@ -23,6 +23,12 @@
     "appName": {
       "value": "app1"
     },
+    "aseName": {
+      "value": "appgw-ase"
+    },
+    "aseName2": {
+      "value": "appgw-ase2"
+    },
     "aseDNSSuffix": {
       "value": "internal.waza.dev"
     },
