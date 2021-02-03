@@ -5,7 +5,7 @@
     "aseLocation": {
       "type": "string"
     },
-    "aseName": {
+    "aseName2": {
       "type": "string"
     },
     "aseFrontEndSize": {
@@ -52,29 +52,29 @@
     }
   },
   "variables": {
-    "certificateName": "[concat(parameters('pfxThumbprint'),'_',parameters('aseName'),'_InternalLoadBalancingASE')]"
+    "certificateName": "[concat(parameters('pfxThumbprint'),'_',parameters('aseName2'),'_InternalLoadBalancingASE')]"
   },
   "resources": [
     {
       "apiVersion": "2016-03-01",
       "type": "Microsoft.Web/hostingEnvironments",
-      "name": "[parameters('aseName')]",
+      "name": "[parameters('aseName2')]",
       "location": "[parameters('aseLocation')]",
       "tags": {
         "displayName": "App Service Environment"
       },
       "properties": {
-        "name": "[parameters('aseName')]",
+        "name": "[parameters('aseName2')]",
         "location": "[parameters('aseLocation')]",
         "zones": [
-            "2"
+            "1"
          ],
         "ipSslAddressCount": "0",
         "internalLoadBalancingMode": "3",
         "dnsSuffix": "[parameters('aseDNSSuffix')]",
         "virtualNetwork": {
           "Id": "[parameters('vnetRef')]",
-          "Subnet": "[parameters('aseSubnetName')]"
+          "Subnet": "[parameters('aseSubnetName2')]"
         },
         "multiSize": "[parameters('aseFrontEndSize')]",
         "multiRoleCount": "[parameters('aseFrontEndCount')]",
@@ -106,13 +106,13 @@
         "displayName": "ILB SSL Certificate"
       },
       "dependsOn": [
-        "[concat('Microsoft.Web/hostingEnvironments/', parameters('aseName'))]"
+        "[concat('Microsoft.Web/hostingEnvironments/', parameters('aseName2'))]"
       ],
       "properties": {
         "pfxBlob": "[parameters('pfxBase64')]",
         "password": "[parameters('pfxPassword')]",
         "hostingEnvironmentProfile": {
-          "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('aseName'))]"
+          "id": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('aseName2'))]"
         }
       }
     }
@@ -120,7 +120,7 @@
   "outputs": {
   //  "aseILBCertificateName": {
   //    "type": "array",
-  //   "value": "[variables('certificateName')]"
+  //    "value": "[variables('certificateName')]"
   //  }
   }
 }

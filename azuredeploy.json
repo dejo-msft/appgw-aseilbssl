@@ -60,6 +60,13 @@
         "description": "The App Service Environment subnet."
       }
     },
+    "aseSubnetPrefix2": {
+      "type": "string",
+      "defaultValue": "10.0.4.0/24",
+      "metadata": {
+        "description": "The App Service Environment 2 subnet."
+      }
+    },
     "bindIp": {
       "type": "string",
       "defaultValue": "10.0.2.50",
@@ -74,9 +81,23 @@
         "description": "The Virtual IP of the App Service Environment's Internal Load Balancer. There is no easy way to obtain it post deployment, hence it is here. You may need to re-run the deployment after it is done to update this value."
       }
     },
+    "aseVirtualIp2": {
+      "type": "string",
+      "defaultValue": "10.0.4.9",
+      "metadata": {
+        "description": "The Virtual IP of the App Service Environment's Internal Load Balancer. There is no easy way to obtain it post deployment, hence it is here. You may need to re-run the deployment after it is done to update this value."
+      }
+    },
     "aseName": {
       "type": "string",
       "defaultValue": "appgw-ase",
+      "metadata": {
+        "description": "Name of the App Service Environment. Has to be unique within the region."
+      }
+    },
+    "aseName2": {
+      "type": "string",
+      "defaultValue": "appgw-ase2",
       "metadata": {
         "description": "Name of the App Service Environment. Has to be unique within the region."
       }
@@ -318,6 +339,7 @@
     "appgwSubnetName": "appgw-subnet",
     "dnsSubnetName": "dns-subnet",
     "aseSubnetName": "ase-subnet",
+    "aseSubnetName2": "ase-subnet2",
     "backendFQDN": "[concat(parameters('appName'),'.',parameters('aseDNSSuffix'))]",
     "apiVersion": "2017-03-01",
     "vnetRef": "[resourceId('Microsoft.Network/virtualNetworks/',variables('vnetName'))]",
@@ -326,6 +348,7 @@
     "appgwPublicIPRef": "[resourceId('Microsoft.Network/publicIPAddresses',variables('appgwPublicIpName'))]",
     "applicationGatewayRef": "[resourceId('Microsoft.Network/applicationGateways',variables('appgwName'))]",
     "aseRef": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('aseName'))]",
+    "aseRef2": "[resourceId('Microsoft.Web/hostingEnvironments',parameters('aseName2'))]",
     "appPlanRef": "[resourceId('Microsoft.Web/serverFarms',parameters('appPlanName'))]"
   },
   "resources": [
@@ -364,8 +387,15 @@
                 "name": "[variables('aseSubnetName')]",
                 "properties": {
                   "addressPrefix": "[parameters('aseSubnetPrefix')]"
-                }
               }
+              },
+              {
+                "name": "[variables('aseSubnetName2')]",
+                "properties": {
+                  "addressPrefix": "[parameters('aseSubnetPrefix2')]"
+                }               
+              }
+              
             ]
           }
         }
@@ -453,6 +483,12 @@
                 "name": "[variables('aseSubnetName')]",
                 "properties": {
                   "addressPrefix": "[parameters('aseSubnetPrefix')]"
+                }
+              },
+              {
+                "name": "[variables('aseSubnetName2')]",
+                "properties": {
+                  "addressPrefix": "[parameters('aseSubnetPrefix2')]"
                 }
               }
             ]
@@ -546,6 +582,71 @@
           },
           "aseSubnetName": {
             "value": "[variables('aseSubnetName')]"
+          },
+          "pfxBase64": {
+            "value": "[parameters('aseILBPfxBase64')]"
+          },
+          "pfxPassword": {
+            "value": "[parameters('aseILBPfxPassword')]"
+          },
+          "pfxThumbprint": {
+            "value": "[parameters('aseILBPfxThumbprint')]"
+          }
+        }
+      }
+    },
+    {
+      "name": "create-ase2",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "update-virtualnetwork-dns"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('repositoryLocation'), '/nested/shared/', 'ase2.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "aseLocation": {
+            "value": "[parameters('aseLocation')]"
+          },
+          "aseName": {
+            "value": "[parameters('aseName2')]"
+          },
+          "aseFrontEndSize": {
+            "value": "[parameters('aseFrontEndSize')]"
+          },
+          "aseFrontEndCount": {
+            "value": "[parameters('aseFrontEndCount')]"
+          },
+          "aseWorkerPoolOneInstanceSize": {
+            "value": "[parameters('aseWorkerPoolOneInstanceSize')]"
+          },
+          "aseWorkerPoolOneInstanceCount": {
+            "value": "[parameters('aseWorkerPoolOneInstanceCount')]"
+          },
+          "aseWorkerPoolTwoInstanceSize": {
+            "value": "[parameters('aseWorkerPoolTwoInstanceSize')]"
+          },
+          "aseWorkerPoolTwoInstanceCount": {
+            "value": "[parameters('aseWorkerPoolTwoInstanceCount')]"
+          },
+          "aseWorkerPoolThreeInstanceSize": {
+            "value": "[parameters('aseWorkerPoolThreeInstanceSize')]"
+          },
+          "aseWorkerPoolThreeInstanceCount": {
+            "value": "[parameters('aseWorkerPoolThreeInstanceCount')]"
+          },
+          "aseDNSSuffix": {
+            "value": "[parameters('aseDNSSuffix')]"
+          },
+          "vnetRef": {
+            "value": "[variables('vnetRef')]"
+          },
+          "aseSubnetName": {
+            "value": "[variables('aseSubnetName2')]"
           },
           "pfxBase64": {
             "value": "[parameters('aseILBPfxBase64')]"
