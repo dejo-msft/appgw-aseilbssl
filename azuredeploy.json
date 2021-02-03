@@ -612,7 +612,7 @@
           "aseLocation": {
             "value": "[parameters('aseLocation')]"
           },
-          "aseName": {
+          "aseName2": {
             "value": "[parameters('aseName2')]"
           },
           "aseFrontEndSize": {
@@ -645,7 +645,7 @@
           "vnetRef": {
             "value": "[variables('vnetRef')]"
           },
-          "aseSubnetName": {
+          "aseSubnetName2": {
             "value": "[variables('aseSubnetName2')]"
           },
           "pfxBase64": {
@@ -773,7 +773,7 @@
           "appPlanName": {
             "value": "[parameters('appPlanName')]"
           },
-          "aseName": {
+          "aseName2": {
             "value": "[parameters('aseName2')]"
           },
           "applicationGatewayRef": {
