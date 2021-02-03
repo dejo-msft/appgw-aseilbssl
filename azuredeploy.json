@@ -757,6 +757,32 @@
       }
     },
     {
+      "name": "create-appplan2",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "create-ase2"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(parameters('repositoryLocation'), '/nested/shared/', 'appplan2.json')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "appPlanName": {
+            "value": "[parameters('appPlanName')]"
+          },
+          "aseName": {
+            "value": "[parameters('aseName2')]"
+          },
+          "applicationGatewayRef": {
+            "value": "[variables('applicationGatewayRef')]"
+          }
+        }
+      }
+    },
+    {
       "name": "create-webapp",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
