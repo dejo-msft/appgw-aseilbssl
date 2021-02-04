@@ -71,6 +71,12 @@
          ],
         "ipSslAddressCount": "0",
         "internalLoadBalancingMode": "3",
+        "clusterSettings": [
+          {
+            "name": "DefaultSslCertificateThumbprint",
+            "value": "[parameters('pfxThumbprint')]"
+          }
+        ],
         "dnsSuffix": "[parameters('aseDNSSuffix')]",
         "virtualNetwork": {
           "Id": "[parameters('vnetRef')]",

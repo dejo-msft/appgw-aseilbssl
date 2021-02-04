@@ -198,14 +198,14 @@
     },
     "aseDNSSuffix": {
       "type": "string",
-      "defaultValue": "internal.domain.com",
+      "defaultValue": "internal.waza.dev",
       "metadata": {
         "description": "The subdomain of the App Service Environment. This doesn't need to be a real domain."
       }
     },
     "rootZoneName": {
       "type": "string",
-      "defaultValue": "domain.com",
+      "defaultValue": "waza.dev",
       "metadata": {
         "description": "The public hostname of the app to be deployed. Make sure that your SSL certificate works for this and that you can manage this domain's DNS."
       }
