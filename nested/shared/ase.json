@@ -56,8 +56,9 @@
   },
   "resources": [
     {
-      "apiVersion": "2016-03-01",
+      "apiVersion": "2015-08-01",
       "type": "Microsoft.Web/hostingEnvironments",
+      "kind": "ASEV2",
       "name": "[parameters('aseName')]",
       "location": "[parameters('aseLocation')]",
       "tags": {
