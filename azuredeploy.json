@@ -189,6 +189,13 @@
         "description": "Name of the App Service Plan"
       }
     },
+    "appPlanName2": {
+      "type": "string",
+      "defaultValue": "appgw-ase-plan2",
+      "metadata": {
+        "description": "Name of the App Service Plan"
+      }
+    },
     "appName": {
       "type": "string",
       "defaultValue": "webapp1",
@@ -771,7 +778,7 @@
         },
         "parameters": {
           "appPlanName": {
-            "value": "[parameters('appPlanName')]"
+            "value": "[parameters('appPlanName2')]"
           },
           "aseName2": {
             "value": "[parameters('aseName2')]"

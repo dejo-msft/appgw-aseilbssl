@@ -31,8 +31,8 @@
         "hostingEnvironmentId": "[parameters('applicationGatewayRef')]"
       },
       "sku": {
-        "Tier": "Premium",
-        "Name": "P1"
+        "Tier": "Isolated",
+        "Name": "I1"
       }
     }
   ],

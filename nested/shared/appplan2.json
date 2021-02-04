@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "appPlanName": {
+    "appPlanName2": {
       "type": "string"
     },
     "applicationGatewayRef": {
@@ -16,7 +16,7 @@
   },
   "resources": [
     {
-      "name": "[parameters('appPlanName')]",
+      "name": "[parameters('appPlanName2')]",
       "type": "Microsoft.Web/serverfarms",
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-09-01",
@@ -24,15 +24,15 @@
         "displayName": "App Service Plan"
       },
       "properties": {
-        "name": "[parameters('appPlanName')]",
+        "name": "[parameters('appPlanName2')]",
         "workerSize": 1,
         "numberOfWorkers": 1,
         "hostingEnvironment": "[parameters('aseName2')]",
         "hostingEnvironmentId": "[parameters('applicationGatewayRef')]"
       },
       "sku": {
-        "Tier": "Premium",
-        "Name": "P1"
+        "Tier": "Isolated",
+        "Name": "I1"
       }
     }
   ],
